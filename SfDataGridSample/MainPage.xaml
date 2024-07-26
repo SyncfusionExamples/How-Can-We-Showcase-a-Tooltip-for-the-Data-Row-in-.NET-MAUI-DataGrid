@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.DataGrid;assembly=Syncfusion.Maui.DataGrid"
+             xmlns:local="clr-namespace:SfDataGridSample"
+             x:Class="SfDataGridSample.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:EmployeeViewModel x:Name="viewModel"/>
+    </ContentPage.BindingContext>
+
+
+    <syncfusion:SfDataGrid x:Name="dataGrid" Margin="10"
+                           SelectionMode="Single"
+                           NavigationMode="Cell"
+                           AllowEditing="True"
+                           GridLinesVisibility="Both"
+                           ColumnWidthMode="Auto"
+                           HeaderGridLinesVisibility="Both"
+                           AutoGenerateColumnsMode="None"
+                           ItemsSource="{Binding Employees}">
+
+        <syncfusion:SfDataGrid.Columns>
+            <syncfusion:DataGridNumericColumn MappingName="EmployeeID"
+                                              HeaderText="Employee ID" />
+            <syncfusion:DataGridTextColumn MappingName="Name"
+                                           AllowFocus="False">
+                <syncfusion:DataGridTextColumn.HeaderTemplate>
+                    <DataTemplate>
+                        <Label Text="Name"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               ToolTipProperties.Text="Name Of the Employee" />
+                    </DataTemplate>
+                </syncfusion:DataGridTextColumn.HeaderTemplate>
+            </syncfusion:DataGridTextColumn>    
+            <syncfusion:DataGridDateColumn MappingName="HireDate"
+                                           HeaderText="Hire Date" />
+            <syncfusion:DataGridComboBoxColumn MappingName="Name"
+                                               ItemsSource="{Binding CustomerNames}"
+                                               HeaderText="Employee Name" />
+            
+        </syncfusion:SfDataGrid.Columns>
+    </syncfusion:SfDataGrid>
+
+</ContentPage>
